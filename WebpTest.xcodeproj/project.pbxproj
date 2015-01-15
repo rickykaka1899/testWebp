@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221BFE521A6538BB005A2E87 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A241671A64E9B1007403CD /* WebP.framework */; };
 		A4A241301A64E84E007403CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A2412F1A64E84E007403CD /* Foundation.framework */; };
 		A4A241321A64E84E007403CD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A241311A64E84E007403CD /* CoreGraphics.framework */; };
 		A4A241341A64E84E007403CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A241331A64E84E007403CD /* UIKit.framework */; };
@@ -21,6 +22,10 @@
 		A4A241511A64E84E007403CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A241331A64E84E007403CD /* UIKit.framework */; };
 		A4A241591A64E84E007403CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A4A241571A64E84E007403CD /* InfoPlist.strings */; };
 		A4A2415B1A64E84E007403CD /* WebpTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A2415A1A64E84E007403CD /* WebpTestTests.m */; };
+		A4A241681A64E9B1007403CD /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A241661A64E9B1007403CD /* UIImage+WebP.m */; };
+		A4A241711A64EA08007403CD /* WAImgCompressUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A4A241701A64EA08007403CD /* WAImgCompressUtil.m */; };
+		A4A241731A64EA99007403CD /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A241721A64EA99007403CD /* default.png */; };
+		A4F732DA1A67688800B57868 /* IMG_0003.JPG in Resources */ = {isa = PBXBuildFile; fileRef = A4F732D91A67688800B57868 /* IMG_0003.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,13 @@
 		A4A241561A64E84E007403CD /* WebpTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WebpTestTests-Info.plist"; sourceTree = "<group>"; };
 		A4A241581A64E84E007403CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A4A2415A1A64E84E007403CD /* WebpTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebpTestTests.m; sourceTree = "<group>"; };
+		A4A241651A64E9B1007403CD /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
+		A4A241661A64E9B1007403CD /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
+		A4A241671A64E9B1007403CD /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebP.framework; sourceTree = "<group>"; };
+		A4A2416F1A64EA08007403CD /* WAImgCompressUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAImgCompressUtil.h; sourceTree = "<group>"; };
+		A4A241701A64EA08007403CD /* WAImgCompressUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAImgCompressUtil.m; sourceTree = "<group>"; };
+		A4A241721A64EA99007403CD /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
+		A4F732D91A67688800B57868 /* IMG_0003.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0003.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				221BFE521A6538BB005A2E87 /* WebP.framework in Frameworks */,
 				A4A241321A64E84E007403CD /* CoreGraphics.framework in Frameworks */,
 				A4A241341A64E84E007403CD /* UIKit.framework in Frameworks */,
 				A4A241301A64E84E007403CD /* Foundation.framework in Frameworks */,
@@ -112,6 +125,10 @@
 		A4A241351A64E84E007403CD /* WebpTest */ = {
 			isa = PBXGroup;
 			children = (
+				A4F732D91A67688800B57868 /* IMG_0003.JPG */,
+				A4A241721A64EA99007403CD /* default.png */,
+				A4A2416E1A64EA08007403CD /* ImageCompress */,
+				A4A241641A64E9B1007403CD /* iOS-WebP */,
 				A4A2413E1A64E84E007403CD /* AppDelegate.h */,
 				A4A2413F1A64E84E007403CD /* AppDelegate.m */,
 				A4A241411A64E84E007403CD /* Main.storyboard */,
@@ -150,6 +167,25 @@
 				A4A241571A64E84E007403CD /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4A241641A64E9B1007403CD /* iOS-WebP */ = {
+			isa = PBXGroup;
+			children = (
+				A4A241651A64E9B1007403CD /* UIImage+WebP.h */,
+				A4A241661A64E9B1007403CD /* UIImage+WebP.m */,
+				A4A241671A64E9B1007403CD /* WebP.framework */,
+			);
+			path = "iOS-WebP";
+			sourceTree = SOURCE_ROOT;
+		};
+		A4A2416E1A64EA08007403CD /* ImageCompress */ = {
+			isa = PBXGroup;
+			children = (
+				A4A2416F1A64EA08007403CD /* WAImgCompressUtil.h */,
+				A4A241701A64EA08007403CD /* WAImgCompressUtil.m */,
+			);
+			path = ImageCompress;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +267,8 @@
 				A4A241481A64E84E007403CD /* Images.xcassets in Resources */,
 				A4A2413A1A64E84E007403CD /* InfoPlist.strings in Resources */,
 				A4A241431A64E84E007403CD /* Main.storyboard in Resources */,
+				A4F732DA1A67688800B57868 /* IMG_0003.JPG in Resources */,
+				A4A241731A64EA99007403CD /* default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +290,8 @@
 				A4A241461A64E84E007403CD /* ViewController.m in Sources */,
 				A4A241401A64E84E007403CD /* AppDelegate.m in Sources */,
 				A4A2413C1A64E84E007403CD /* main.m in Sources */,
+				A4A241681A64E9B1007403CD /* UIImage+WebP.m in Sources */,
+				A4A241711A64EA08007403CD /* WAImgCompressUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +373,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -365,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -376,10 +416,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: JIN ZHANG (S7WZJKK4D8)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOS-WebP",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WebpTest/WebpTest-Prefix.pch";
 				INFOPLIST_FILE = "WebpTest/WebpTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f072f1df-5f16-4cb5-8efb-dacf49a03c44";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -389,10 +436,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: UFIDA Software Co., Ltd.  Beijing Branch";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/iOS-WebP",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WebpTest/WebpTest-Prefix.pch";
 				INFOPLIST_FILE = "WebpTest/WebpTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "69feee1f-6345-4b64-95d5-801baa66ebfa";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -456,6 +510,7 @@
 				A4A241601A64E84E007403CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A4A241611A64E84E007403CD /* Build configuration list for PBXNativeTarget "WebpTestTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +519,7 @@
 				A4A241631A64E84E007403CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
