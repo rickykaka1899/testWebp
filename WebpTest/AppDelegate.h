@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 KakaCompany. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
