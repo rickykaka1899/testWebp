@@ -22,6 +22,14 @@ static CGFloat alpha = 1.0f;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+//  NSUInteger i = 0;
+////  NSUInteger k = 1;
+//  int j = i - 1;
+//  if (j > 0)
+//  {
+//    NSLog(@">");
+//  }
+//  NSLog(@"j: %lu",j);
   // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -80,6 +88,8 @@ static CGFloat alpha = 1.0f;
   [picker release];
 }
 
+//CGImageRef
+
 -(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 {
@@ -88,50 +98,57 @@ static CGFloat alpha = 1.0f;
   if ([type isEqualToString:@"public.image"])
   {
     UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+//    [self writeToPhotoAlbum:image];
+    NSData *data75 = UIImageJPEGRepresentation(image, 0.75f);
+    [self writeToPhotoAlbum:[UIImage imageWithData:data75]];
+    NSData *originaldata = UIImageJPEGRepresentation([UIImage imageWithData:data75], 1.0f);
+    [self writeToPhotoAlbum:[UIImage imageWithData:originaldata]];
     [picker dismissViewControllerAnimated:YES completion:nil];
+
     NSURL *imageurl = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
     NSString *typestr = [imageurl absoluteString];
     NSString *imageType = nil;
-    NSData __block *originaldata;
-    //本地读区，png格式
-    if ([typestr containsString:@"png"] || [typestr containsString:@"PNG"])
-    {
-      imageType = @"png";
-      originaldata = UIImagePNGRepresentation(image);
+//    //本地读取，png格式
+//    if ([typestr containsString:@"png"] || [typestr containsString:@"PNG"])
+//    {
+//      imageType = @"png";
+//    }
+//    //本地读取，jpg格式
+//    if ([typestr containsString:@"jpg"] || [typestr containsString:@"JPG"])
+//    {
+//      imageType = @"jpg";
+//    }
+//    //本地读取，gif格式
+//    if ([typestr containsString:@"gif"] || [typestr containsString:@"GIF"])
+//    {
+//      imageType = @"gif";
+//    }
+//    //来自拍照，jpg格式
+//    if (!typestr)
+//    {
+      imageType = @"jpg";
+//    }
 
-    }
-    //本地读区，jpg格式
-    if ([typestr containsString:@"jpg"] || [typestr containsString:@"JPG"])
-    {
-      imageType = @"jpg";
-      originaldata = UIImageJPEGRepresentation(image, 1.0);
-    }
-    //来自拍照，jpg格式
-    if (!typestr)
-    {
-      imageType = @"jpg";
-      originaldata = UIImageJPEGRepresentation(image, 1.0);
-    }
     NSDate *datenow = [NSDate date];
     NSString *nowtimeStr = [NSString stringWithFormat:@"%f",[datenow timeIntervalSinceReferenceDate]];
     //执行方案A，先压缩再转换为webp
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-      [self normalThenWebpCompress:[UIImage imageWithData:originaldata]
-                      withFileName:[nowtimeStr substringToIndex:9]
-                      andPhotoType:imageType];
-    });
-    //执行方案B，直接转为webp
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-      [self newWebpCompress:[UIImage imageWithData:originaldata]
-               withFileName:[nowtimeStr substringToIndex:9]];
-    });
-    //原图保存
-    NSString *originalPath = [[self filePath:nowtimeStr]stringByAppendingPathComponent:[NSString stringWithFormat:@"originalimage.%@",imageType]];
-    if([originaldata writeToFile:originalPath atomically:YES])
-    {
-      uint64_t originalFileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:originalPath error:nil] fileSize];
-      [iOriginalLabel setText:[NSString stringWithFormat:@"%@图大小: %.2fMB",imageType,(double)originalFileSize/1024.0/1024.0]];
-    }
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+//      [self normalThenWebpCompress:[UIImage imageWithData:originaldata]
+//                      withFileName:[nowtimeStr substringToIndex:9]
+//                      andPhotoType:imageType];
+//    });
+//    //执行方案B，直接转为webp
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+//      [self newWebpCompress:[UIImage imageWithData:originaldata]
+//               withFileName:[nowtimeStr substringToIndex:9]];
+//    });
+//    //原图保存
+//    NSString *originalPath = [[self filePath:[nowtimeStr substringToIndex:9]]stringByAppendingPathComponent:[NSString stringWithFormat:@"originalimage.%@",imageType]];
+//    if([originaldata writeToFile:originalPath atomically:YES])
+//    {
+//      uint64_t originalFileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:originalPath error:nil] fileSize];
+//      [iOriginalLabel setText:[NSString stringWithFormat:@"%@图大小: %.2fMB",imageType,(double)originalFileSize/1024.0/1024.0]];
+//    }
     
   }
 }
